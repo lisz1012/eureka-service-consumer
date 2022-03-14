@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: consumer
+server:
+  port: 90
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7900/eureka/
+  instance:
+    metadata-map:
+      dalao: lisz-hahaha
