@@ -18,7 +18,7 @@ import java.util.Random;
 
 @RestController
 public class MainController {
-	// 用的是Spring Cloud 的抽象层
+	// 用的是Spring Cloud 的抽象层。
 	@Autowired
 	private DiscoveryClient discoveryClient;
 
