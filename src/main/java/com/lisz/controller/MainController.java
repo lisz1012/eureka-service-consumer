@@ -18,7 +18,7 @@ import java.util.Random;
 
 @RestController
 public class MainController {
-	// 用的是Spring Cloud 的抽象层。下面的实现类未必就是Netflix的了
+	// 用的是Spring Cloud 的抽象层。下面的实现类未必就是Netflix的了。
 	@Autowired
 	private DiscoveryClient discoveryClient;
 
