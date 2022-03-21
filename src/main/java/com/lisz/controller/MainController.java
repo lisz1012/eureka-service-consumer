@@ -23,7 +23,7 @@ public class MainController {
 	private DiscoveryClient discoveryClient;
 
 	@Autowired
-	private LoadBalancerClient lb;  // BlockingLoadBalancerClient。也可参看Spring Cloud阿里。
+	private LoadBalancerClient lb;  // BlockingLoadBalancerClient。也可参看Spring Cloud阿里。老版本的应用一般用Ribbon
 
 	private Random rand = new Random();
 
