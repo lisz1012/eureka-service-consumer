@@ -33,7 +33,7 @@ public class MainController {
 
 	@GetMapping("/client2")
 	public Object client2(){
-		return discoveryClient.getInstances("provider"); // 上面 /client API的输出
+		return discoveryClient.getInstances("provider"); // 上面 /client API的输出, 通过服务名去找Instance的List
 	}
 
 	@GetMapping("/client3")
