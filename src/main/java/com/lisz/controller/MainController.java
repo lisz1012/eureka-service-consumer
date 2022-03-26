@@ -1,5 +1,6 @@
 package com.lisz.controller;
 
+import com.lisz.service.HealthIndicatorService;
 import com.netflix.appinfo.InstanceInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -8,6 +9,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.netflix.eureka.EurekaServiceInstance;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,6 +21,9 @@ public class MainController {
 	// 用的是Spring Cloud 的抽象层。下面的实现类未必就是Netflix的了。联系服务部署.
 	@Autowired
 	private DiscoveryClient discoveryClient;
+
+	@Autowired
+	private HealthIndicatorService healthIndicatorService;
 
 	@Autowired
 	private LoadBalancerClient lb;  // BlockingLoadBalancerClient。也可参看Spring Cloud阿里。老版本的应用一般用Ribbon。
@@ -63,5 +68,12 @@ public class MainController {
 		String url = instance.getUri() + "/getHi";
 		final ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
 		return "Provider returned: " + entity.getBody() + " <br /> status code: " + entity.getStatusCode();
+	}
+
+	@GetMapping("/flipHealth")
+	public String flipHealth(@RequestParam Boolean status) {
+		healthIndicatorService.setUp(status);
+		healthIndicatorService.health();
+		return "success";
 	}
 }
