@@ -26,7 +26,7 @@ public class MainController {
 	private HealthIndicatorService healthIndicatorService;
 
 	@Autowired
-	private LoadBalancerClient lb;  // BlockingLoadBalancerClient。也可参看Spring Cloud阿里。老版本的应用一般用Ribbon。
+	private LoadBalancerClient lb;  // BlockingLoadBalancerClient。也可参看Spring Cloud阿里。老版本的应用一般用Ribbon。这个类block是因为里面有Response<ServiceInstance> loadBalancerResponse = Mono.from(loadBalancer.choose(request)).block();
 
 	private Random rand = new Random();
 
