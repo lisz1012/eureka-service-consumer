@@ -32,6 +32,9 @@ public class MainController2 {
 	@Autowired
 	private LoadBalancerClient lb;
 
+	// User 资源事先定义，有哪些A PI
+
+
 	@Autowired
 	private DiscoveryClient discoveryClient;
 
